@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Just Pete</title>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
+    <link rel="stylesheet" href="receiver.css">
+    <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Lato:300' type='text/css'>
+
+    <script src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
+    <script src="receiver.js"></script>
+</head>
+<body>
+    <div class="vertical-center hidden" id="guess-content">
+        <div class="container">
+
+            <div class="row animated animated-delay-2 bounceInDown">
+              <div class="col-xs-offset-5 col-xs-1"><i class="fa fa-arrow-down"></i></div>
+              <div class="col-xs-2 text-right" id="below">?</div>
+            </div>
+
+            <div class="row animated animated-delay-2 bounceInUp">
+              <div class="col-xs-offset-5 col-xs-1"><i class="fa fa-arrow-up"></i></div>
+              <div class="col-xs-2 text-right" id="above">?</div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="vertical-center hidden" id="win-content">
+        <div class="container">
+
+            <img class="center-block" src="win.png"/>
+
+            <p id="winner-name" class="text-center text-danger">Mystery winner</p>
+            <p class="text-center">If Einstein could meet you<br>he'd <i>almost</i> be intimidated.</p>
+        </div>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+
+</html>
