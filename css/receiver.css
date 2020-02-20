@@ -41,7 +41,7 @@ cast-media-player {
 /* Sample Overlay Text                               */
 /* ------------------------------------------------- */
 cast-media-player:after {
-  content: "hisense";
+  content: "";
   position: absolute;
   left: -50%;
   right: 0;
