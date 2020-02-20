@@ -1,50 +1,67 @@
+<!--
+Copyright (C) 2013 Google Inc. All Rights Reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="mediaBrowser">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Just Pete</title>
-
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
-    <link rel="stylesheet" href="receiver.css">
-    <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Lato:300' type='text/css'>
-
-    <script src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
-    <script src="receiver.js"></script>
-</head>
-<body>
-    <div class="vertical-center hidden" id="guess-content">
-        <div class="container">
-
-            <div class="row animated animated-delay-2 bounceInDown">
-              <div class="col-xs-offset-5 col-xs-1"><i class="fa fa-arrow-down"></i></div>
-              <div class="col-xs-2 text-right" id="below">?</div>
-            </div>
-
-            <div class="row animated animated-delay-2 bounceInUp">
-              <div class="col-xs-offset-5 col-xs-1"><i class="fa fa-arrow-up"></i></div>
-              <div class="col-xs-2 text-right" id="above">?</div>
-            </div>
-
-        </div>
+    <title>Media Browser 3</title>
+      <script src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
+      <script src="//www.gstatic.com/cast/sdk/libs/mediaplayer/0.3.0/media_player.js"></script>
+      <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/glyphicons.css">
+    <link rel="stylesheet" href="css/media-browser.css?hash=019">
+  </head>
+  <body ng-class="status" ng-controller="MainCtrl">
+    <div id="waiting-container">
+      <div>
+        <img class="logo" src="img/media-browser-logo.png">
+        <h1>Ready to cast.</h1>
+        <h2>Choose some media in Media Browser and play it here.</h2>
+      </div>
+      <p class="version-number">{{versionNumber}}</p>
     </div>
-
-    <div class="vertical-center hidden" id="win-content">
-        <div class="container">
-
-            <img class="center-block" src="win.png"/>
-
-            <p id="winner-name" class="text-center text-danger">Mystery winner</p>
-            <p class="text-center">If Einstein could meet you<br>he'd <i>almost</i> be intimidated.</p>
-        </div>
+    <video id="video-player" preload="auto"></video>
+    <div id="backdrop" ng-style="{backgroundImage : 'url('+backdrop+')'}">
+        <img class="spinner" src="img/spinner.png"/>
+        <div class="gradient">
+        <h2>
+          <span class="media-title">{{mediaTitle}}</span>
+          <span class="media-secondary-title">{{secondaryTitle}}</span>
+        </h2>
+      </div>
     </div>
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-</body>
-
+    <div id="controls">
+      <img id="media-poster" ng-src="{{poster}}"/>
+      <div id="right-controls">
+        <h1>
+          <i class="glyphicon glyphicon-pause" ng-show="paused"></i>
+          <i class="glyphicon glyphicon-play" ng-hide="paused"></i>
+          <span class="media-title">{{mediaTitle}}</span>
+          <span class="media-secondary-title">{{secondaryTitle}}</span>&nbsp;
+        </h1>
+        <div id="player-controls-left"><span class="player-time player-current-time">{{( (startTimeTicks * 1) + (currentTime * 10000000)) | displayTime}}</span></div>
+        <div id="player-controls-right"><span class="player-time player-duration">{{duration | displayTime}}</span></div>
+        <div id="player-controls-center">
+          <div id="player-progress-track">
+            <div id="player-progress-bar" ng-style="{ width: (( (startTimeTicks * 1) + (currentTime * 10000000)) / duration * 100) + '%' }"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
+    <script src="js/media_browser_receiver.js?hash=019"></script>
+  </body>
 </html>
