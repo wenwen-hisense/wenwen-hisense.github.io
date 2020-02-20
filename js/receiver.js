@@ -20,7 +20,7 @@ Cast.
 
 'use strict';
 
-import { CastQueue } from './queuing.js';
+//import { CastQueue } from './queuing.js';
 
 const context = cast.framework.CastReceiverContext.getInstance();
 const playerManager = context.getPlayerManager();
@@ -73,7 +73,7 @@ controls.assignButton(
 )
 
 context.start({
-  queue: new CastQueue(),
+  //queue: new CastQueue(),
   playbackConfig: playbackConfig,
   supportedCommands: cast.framework.messages.Command.ALL_BASIC_MEDIA |
                       cast.framework.messages.Command.QUEUE_PREV |
