@@ -41,11 +41,11 @@ cast-media-player {
 /* Sample Overlay Text                               */
 /* ------------------------------------------------- */
 cast-media-player:after {
-  content: "a";
+  content: "hisense";
   position: absolute;
-  left: 0;
+  left: -50%;
   right: 0;
-  top: 50%;
+  top: 5%;
   bottom: 0;
   text-align: center;
   font-size: 200px;

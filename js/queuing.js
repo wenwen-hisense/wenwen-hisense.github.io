@@ -34,7 +34,7 @@ class CastQueue extends cast.framework.QueueBase {
     item.media.metadata.images =
         [new cast.framework.messages.Image("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg")];
 
-    this.sampleItem = item;
+    this.sampleItem = nul;
   }
 
   /**
